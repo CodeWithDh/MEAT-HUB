@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Meat-Hub</title>
+  <link rel="stylesheet" href="style/output.css" />
+
+<style>
+  .miniMap {
+    width: 20rem;
+    height: 11rem;
+  }
+  ::-webkit-scrollbar {
+    width: 3px; 
+    height: 4px; 
+  }
+
+  ::-webkit-scrollbar-track {
+    background: transparent; 
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #ff0000, #b30000);
+    border-radius: 10px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, #cc0000, #800000); 
+  }
+
+</style>
+</head>
+<body>
+  <%- include("include/menu.ejs") %>
+
+
+    <!-- Content Area -->
+    <div class="h-full w-full flex flex-col">
+      <!-- Top Section -->
+      <div class="h-[30%] flex items-center justify-center space-y-4 pb-4 border-b-2 border-white">
+        <img
+          src="assets/logo.png"
+          alt="Logo"
+          class="w-64 h-28 object-contain logo"
+        />
+
+        <div class="flex space-x-3">
+          <div class="flex flex-col items-center cursor-pointer">
+            <img
+              class="miniMap border-2 border-black"
+              src="https://thelawgivers.com/wp-content/uploads/2016/04/dummy-post-square-1.jpg"
+              alt="empData"
+            />
+            <span class="text-white text-sm mt-1">Employees</span>
+          </div>
+          <div class="flex flex-col items-center cursor-pointer">
+            <img
+              class="miniMap border-2 border-black"
+              src="https://thelawgivers.com/wp-content/uploads/2016/04/dummy-post-square-1.jpg"
+              alt="inventoryIndicator"
+            />
+            <span class="text-white text-sm mt-1">Inventory</span>
+          </div>
+          <div class="flex flex-col items-center cursor-pointer">
+            <img
+              class="miniMap border-2 border-black"
+              src="https://thelawgivers.com/wp-content/uploads/2016/04/dummy-post-square-1.jpg"
+              alt="salesGraph"
+            />
+            <span class="text-white text-sm mt-1">Sales</span>
+          </div>
+          <div class="flex flex-col items-center cursor-pointer" style="margin-right: 10px;">
+            <img
+              class="miniMap border-2 border-black"
+              src="https://thelawgivers.com/wp-content/uploads/2016/04/dummy-post-square-1.jpg"
+              alt="orderGraph"
+            />
+            <span class="text-white text-sm mt-1">Orders</span>
+          </div>
+        </div>
+      </div>
+      
+      <div class="h-[70%] w-full flex flex-col items-center p-4 pb-2">
+  <h3 class="text-2xl font-semibold mb-6 text-white">📋 Recent Orders</h3>
+  <!-- Table Headers -->
+  <table class="w-full text-white border-collapse">
+    <thead class="bg-red-500 sticky top-0 z-10">
+      <tr>
+        <th class="p-3 text-left font-medium text-gray-700">Order ID</th>
+        <th class="p-3 text-left font-medium text-gray-700">Ordered Items</th>
+        <th class="p-3 text-left font-medium text-gray-700">Time</th>
+        <th class="p-3 text-left font-medium text-gray-700">Total Amount</th>
+        <th class="p-3 text-left font-medium text-gray-700">Status</th>
+      </tr>
+    </thead>
+  </table>
+
+  <!-- Scrollable Table Body -->
+ <div class="overflow-y-scroll w-full h-full scrollbar-thin">
+    <table class="w-full text-white border-collapse">
+      <tbody class="divide-y divide-gray-200">
+        <% if (orders.length > 0) { %>
+          <% for (let order of orders) { %>
+            <tr>
+              <td class="p-3 cursor-pointer">#<%= order.orderId %></td>
+              <td class="p-3 cursor-pointer"><%= order.orderList %></td>
+              <td class="p-3 cursor-pointer">
+                <%- 
+                    `${String(new Date(order.time).getDate()).padStart(2, '0')}/
+                    ${String(new Date(order.time).getMonth() + 1).padStart(2, '0')}/
+                    ${new Date(order.time).getFullYear()},
+                    ${String(new Date(order.time).getHours() % 12 || 12).padStart(2, '0')}:
+                    ${String(new Date(order.time).getMinutes()).padStart(2, '0')}
+                    ${new Date(order.time).getHours() >= 12 ? 'PM' : 'AM'}`
+                %>
+              </td>
+              <td class="p-3 cursor-pointer">₹<%= order.total %></td>
+              <td class="p-3 cursor-pointer">
+                <span class="status <%= order.status.toLowerCase().replace(' ', '-') %>">
+                  <%= order.status %>
+                </span>
+              </td>
+            </tr>
+          <% } %>
+        <% } else { %>
+          <tr>
+            <td colspan="5" class="p-4 text-center text-gray-500">No recent orders found.</td>
+          </tr>
+        <% } %>
+      </tbody>
+    </table>
+  </div>
+</div>
+</div>
+
+</body>
+</html>

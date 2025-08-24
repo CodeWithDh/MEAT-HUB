@@ -1,0 +1,113 @@
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Authentication Page</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+<link rel="stylesheet" href="/style/output.css">
+<style>
+#bg{
+    background-image: linear-gradient(to top right,  #0c0c0c, #00000df0,#77101e, #32070d);   
+    overflow: hidden;
+    padding: 10px;
+    box-sizing: border-box; /* Important for proper border behavior */
+    border: 1px solid #333; 
+    background-position: center center;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+.logo img {
+    width: 120px;
+    margin-bottom: 0px;
+  }
+
+
+</style>
+</head>
+<body id="bg">
+    <div class="flex flex-col items-center justify-center min-h-screen  p-6 bg-transparent">
+        <div class="backdrop-blur-md border border-gray-300 bg-white rounded-lg p-6 max-w-md mx-auto">
+            <!-- Logo -->
+            <div class="flex justify-center mb-4 logo">
+                <img src="/assets/logo.png" alt="Logo" >
+            </div>
+            
+            <h3 class="text-xl font-semibold text-red-500 text-center mb-4">Authentication Form</h3>
+    
+            <!-- Step 1: Email and Phone Verification -->
+            <form id="infoForm" method="post" action="/auth/check" class="space-y-4">
+                <input 
+                type="email" 
+                id="email" 
+                name="email" 
+                class="text-gray-700 w-full p-3 border rounded-lg bg-transparent  placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-red-500" 
+                placeholder="Enter your registered Email-Id" 
+                required>
+
+                <input 
+                type="tel" 
+                id="phone" 
+                name="phone" 
+                class="w-full p-3 border rounded-lg bg-transparent text-gray-700 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-red-500" 
+                placeholder="Enter phone number" 
+                required>
+
+                <button 
+                type="submit" 
+                class="w-full bg-red-500 text-gray-700 p-3 rounded-lg hover:bg-red-600 transition">
+                Check
+                </button>
+    
+                <% if (message === 'incorrect') { %>
+                    <div class="bg-red-100 text-red-500 p-3 rounded-lg mt-3">
+                        <%= message %>
+                    </div>
+                <% } %>
+            </form>
+    
+            <!-- Step 2: OTP Verification -->
+            <% if (message === "clear") { %>
+                <p class="text-green-500 text-center mt-4">OTP is successfully sent to your registered email id.</p>
+                <form id="otpForm" method="post" action="/auth/verify" class="space-y-4 mt-4">
+                    <input type="text" id="otp" name="otp" class="w-full p-3 border rounded-lg bg-transparent text-gray-700 placeholder-gray-300 focus:ring-2 focus:ring-green-400" placeholder="Enter OTP" required>
+                    <button class="w-full bg-green-500 text-gray-700 p-3 rounded-lg hover:bg-green-600 transition">Verify OTP</button>
+                    
+                    <% if (otpMsg !== 'null') { %>
+                        <div class="bg-red-100 text-red-500 p-3 rounded-lg mt-3">
+                            <%= otpMsg %>
+                        </div>
+                    <% } %>
+                </form>
+            
+            <% } else if (message === "verified") { %>
+                <hr class="my-4">
+                <p class="text-green-500 text-center">OTP verified successfully!</p>
+                
+                <!-- Step 3: Set New Password -->
+                <form method="post" action="/auth/newpass" class="space-y-4">
+                    <p class="text-gray-300 text-center">Now you can set a new password.</p>
+                    
+                    <input type="password" id="newPassword" name="newPassword" class="w-full p-3 border rounded-lg bg-transparent text-gray-700 placeholder-gray-300 focus:ring-2 focus:ring-blue-400" placeholder="Enter New Password" required>
+                    
+                    <input type="password" id="confirmPassword" name="confirmPassword" class="w-full p-3 border rounded-lg bg-transparent text-gray-700 placeholder-gray-300 focus:ring-2 focus:ring-blue-400" placeholder="Re-Enter Password" required>
+                    
+                    <button id="submitBtn" type="submit" class="w-full bg-red-500 text-white p-3 rounded-lg hover:bg-red-600 transition">Set Password</button>
+                
+
+                </form>
+                <% if (otpMsg !== 'null') { %>
+                    <div class="bg-red-100 text-red-500 p-3 rounded-lg mt-3">
+                        <%= otpMsg %>
+                    </div>
+                <% } %>
+            <% } %>
+        </div>
+    </div>
+    
+
+</body>
+</html>

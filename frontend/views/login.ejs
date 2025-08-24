@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/style/output.css">
+    <title>The Meat-Hub</title>
+    <style>
+    #bg{
+    background-image: linear-gradient(to top right,  #0c0c0c, #00000df0,#77101e, #32070d); 
+    overflow: hidden;
+    padding: 10px;
+    box-sizing: border-box; /* Important for proper border behavior */
+    border: 1px solid #333; background-position: center center;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    }
+    .logo img {
+    width: 120px;
+    margin-bottom: 0px;
+    }
+    </style>
+</head>
+<body id="bg">
+
+    <div class="max-w-md mx-auto p-6 border border-gray-200 rounded-lg shadow-md bg-white">
+        <!-- Logo -->
+        <div class="flex justify-center mb-6 logo">
+          <img src="./assets/logo.png" alt="Logo" >
+        </div>
+        
+        <!-- Title -->
+        <h2 class="text-2xl font-bold text-red-500 text-center mb-6  font-Gothic">Login</h2>
+      
+        <!-- Login Form -->
+        <form method="post" action="/dashboard" class="space-y-4">
+          <input 
+            type="text" 
+            id="username" 
+            name="username" 
+            class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500" 
+            placeholder="Username" 
+            required
+          >
+          
+          <input 
+            type="password" 
+            id="password" 
+            name="password" 
+            class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500" 
+            placeholder="Password" 
+            required
+          >
+          
+          <div class="text-center mt-3 mb-3">
+            <a href="/auth" class="text-sm text-red-600 hover:text-red-800">Forgot Password?</a>
+          </div>
+          
+          <button 
+            type="submit" 
+            id="loginbtn" 
+            class="w-full bg-red-600 hover:bg-red-700 text-white font-medium py-2 px-4 rounded-md transition duration-200"
+          >
+            Login
+          </button>
+          <% if(msg.length>0){ %>
+            <div class="bg-red-100 border border-red-400 text-center text-red-700 px-4 py-3 rounded relative" role="alert">
+              <span class="block sm:inline"><%= msg %></span>
+            </div>
+          <% } %>
+          
+        </form>
+      </div>
+</body>
+</html>
