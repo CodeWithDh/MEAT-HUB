@@ -36,33 +36,7 @@ Employees → Salary & management.
 
 Migration scripts for schema evolution.
 
-3. 📂 Folder Setup Professionalism
-
-Adopting a modular and maintainable folder structure:
-
-MeatHub/
-│── backend/
-│   ├── src/
-│   │   ├── config/        # DB, JWT, Environment configs
-│   │   ├── controllers/   # Business logic
-│   │   ├── models/        # Database schemas
-│   │   ├── routes/        # API routes
-│   │   ├── middlewares/   # Auth & validations
-│   │   ├── services/      # Reusable services
-│   │   └── utils/         # Helper functions
-│   └── tests/             # Unit & integration tests
-│
-│── frontend/
-│   ├── public/            # Static assets
-│   ├── src/
-│   │   ├── components/    # Reusable UI components
-│   │   ├── pages/         # Page views
-│   │   ├── services/      # API integration
-│   │   ├── hooks/         # Custom hooks
-│   │   └── styles/        # Tailwind / CSS files
-│
-│── docs/                  # Documentation
-│── README.md
+3. Project Structure will be Re - framed
 
 4. ⚡ Enhancing Performance
 
