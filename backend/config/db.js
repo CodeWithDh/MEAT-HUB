@@ -12,7 +12,6 @@ const connection = mysql.createConnection({
     waitForConnections: true,
     connectionLimit: 10
   });
-
 // Convert connection to use promises
 const db = connection.promise();
 
