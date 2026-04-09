@@ -10,10 +10,18 @@
           <!-- Main Navigation -->
           <ul class="space-y-2 px-4">
               <li>
-                  <a href="/dashboard" class="flex items-center p-3 rounded-lg hover:bg-gray-700 transition-colors duration-200 text-gray-200 hover:text-white">
-                      <span class="mr-3 text-lg">🏠</span>
-                      <span class="font-medium tracking-wide">Dashboard</span>
-                  </a>
+                  <form action="/dashboard" method="POST" class="w-full">
+    <button
+        type="submit"
+        class="w-full flex items-center p-3 rounded-lg
+               hover:bg-gray-700 transition-colors duration-200
+               text-gray-200 hover:text-white cursor-pointer">
+        <span class="mr-3 text-lg">🏠</span>
+        <span class="font-medium tracking-wide">Dashboard</span>
+    </button>
+</form>
+
+
               </li>
               <li>
                   <a href="/orders" class="flex items-center p-3 rounded-lg hover:bg-gray-700 transition-colors duration-200 text-gray-200 hover:text-white">
@@ -22,25 +30,25 @@
                   </a>
               </li>
               <li>
-                  <a href="#" class="flex items-center p-3 rounded-lg hover:bg-gray-700 transition-colors duration-200 text-gray-200 hover:text-white">
+                  <a href="/billing" class="flex items-center p-3 rounded-lg hover:bg-gray-700 transition-colors duration-200 text-gray-200 hover:text-white">
                       <span class="mr-3 text-lg">💰</span>
                       <span class="font-medium tracking-wide">Billing</span>
                   </a>
               </li>
               <li>
-                  <a href="#" class="flex items-center p-3 rounded-lg hover:bg-gray-700 transition-colors duration-200 text-gray-200 hover:text-white">
+                  <a href="/inventory" class="flex items-center p-3 rounded-lg hover:bg-gray-700 transition-colors duration-200 text-gray-200 hover:text-white">
                       <span class="mr-3 text-lg">📦</span>
                       <span class="font-medium tracking-wide">Inventory</span>
                   </a>
               </li>
               <li>
-                  <a href="#" class="flex items-center p-3 rounded-lg hover:bg-gray-700 transition-colors duration-200 text-gray-200 hover:text-white">
+                  <a href="/sales" class="flex items-center p-3 rounded-lg hover:bg-gray-700 transition-colors duration-200 text-gray-200 hover:text-white">
                       <span class="mr-3 text-lg">👥</span>
                       <span class="font-medium tracking-wide">Sales</span>
                   </a>
               </li>
               <li>
-                  <a href="#" class="flex items-center p-3 rounded-lg hover:bg-gray-700 transition-colors duration-200 text-gray-200 hover:text-white">
+                  <a href="/invoices" class="flex items-center p-3 rounded-lg hover:bg-gray-700 transition-colors duration-200 text-gray-200 hover:text-white">
                       <span class="mr-3 text-lg">📄</span>
                       <span class="font-medium tracking-wide">Invoices</span>
                   </a>

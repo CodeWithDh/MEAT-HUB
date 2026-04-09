@@ -1,13 +1,15 @@
-import express from "express";
-import data from "../config/login.js";
-
-async function loginCheck(username,pass,data=data){
+async function loginCheck(username,pass,data=data[0]){
     data=data[0];
-    if(username===data.username && pass===data.password){
-        return true;
-    }else{
+    if(!username || !pass){
+        console.log("No credentials found")
         return false;
-    }
+    }else if(username==data.username && pass==data.password){
+            return true;
+        }else{
+            console.log("wrong credentials")
+            return false;
+        }
+    
 }
 
 export default loginCheck;
