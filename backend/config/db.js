@@ -5,10 +5,11 @@ import mysql from "mysql2";
 import express from "express";
 
 const connection = mysql.createConnection({
-    host: "localhost",
-    user: 'root',
-    password: 'Shivam.123',
-    database: 'meat_hub_db',
+    host: process.env.db_host || "localhost",
+    user: process.env.db_user || 'root',
+    password: process.env.db_password || 'Shivam.123',
+    database: process.env.db_name || 'meat_hub_db',
+    port: process.env.db_port || 3306,
     waitForConnections: true,
     connectionLimit: 10
   });

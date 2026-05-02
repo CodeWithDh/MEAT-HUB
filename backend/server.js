@@ -51,6 +51,7 @@ import logout from "./routes/logout.js";
 import auth from "./routes/auth.js";
 import orders from "./routes/orders.js";
 import placeOrder from "./routes/placeOrder.js";
+import edit from "./routes/edit.js";
 
 app.use("/", login);
 app.use("/auth", auth);
@@ -58,6 +59,7 @@ app.use("/dashboard", dashboard);
 app.use("/logout", logout);
 app.use("/orders", orders);
 app.use("/placeOrder", placeOrder);
+app.use("/edit", edit);
 
 // ================== SERVER ==================
 app.listen(port, () => {
